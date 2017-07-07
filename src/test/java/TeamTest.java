@@ -28,4 +28,11 @@ public class TeamTest {
     Team testTeam2 = new Team("test2");
     assertEquals(2, testTeam2.getId());
   }
+
+  @Test
+  public void find_getParticularTeam_testTeam2() {
+    Team testTeam1 = new Team("test1");
+    Team testTeam2 = new Team("test2");
+    assertEquals(testTeam2, Team.find(testTeam2.getId()));
+  }
 }

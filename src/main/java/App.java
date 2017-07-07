@@ -4,6 +4,7 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
 import java.util.ArrayList;
+import java.io.Console;
 
 public class App {
   public static void main(String[] args) {
@@ -21,5 +22,30 @@ public class App {
       model.put("teams", Team.getTeams());
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/teams/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/team-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/teams", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/teams.vtl");
+      String teamName = request.queryParams("name");
+      Team team = new Team(teamName);
+      model.put("teams", Team.getTeams());
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/teams/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/team.vtl");
+      Integer id = Integer.parseInt(request.params(":id"));
+      Team team = Team.find(id);
+      model.put("team", team );
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
