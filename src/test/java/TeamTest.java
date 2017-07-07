@@ -21,4 +21,11 @@ public class TeamTest {
     Team testTeam2 = new Team("test2");
     assertEquals(true, Team.getTeams().contains(testTeam2));
   }
+
+  @Test
+  public void id_getTeamId_2() {
+    Team testTeam1 = new Team("test1");
+    Team testTeam2 = new Team("test2");
+    assertEquals(2, testTeam2.getId());
+  }
 }

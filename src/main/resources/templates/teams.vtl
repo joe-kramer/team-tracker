@@ -1,2 +1,5 @@
 <h1>Current Teams</h1>
 #foreach($team in $teams)
+  <a href="teams/$team.getId()">$team.getName()</a>
+#end
+<a href="/teams/new">Add a New Team</a>
