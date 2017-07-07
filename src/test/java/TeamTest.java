@@ -3,6 +3,11 @@ import static org.junit.Assert.*;
 
 public class TeamTest {
 
+  @Before
+  public void initialClear() {
+    Team.clear();
+  }
+
   @Test
   public void team_instantiatesCorrectly_true() {
     Team testTeam = new Team("test");
@@ -34,5 +39,12 @@ public class TeamTest {
     Team testTeam1 = new Team("test1");
     Team testTeam2 = new Team("test2");
     assertEquals(testTeam2, Team.find(testTeam2.getId()));
+  }
+
+  @Test
+  public void clear_clearInstances_0() {
+    Team testTeam1 = new Team("test1");
+    Team.clear();
+    assertEquals(0, Team.getTeams().size());
   }
 }

@@ -34,4 +34,8 @@ public class Team {
     return mMembers;
   }
 
+  public static void clear() {
+    instances.clear();
+  }
+
 }
