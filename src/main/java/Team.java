@@ -38,4 +38,8 @@ public class Team {
     instances.clear();
   }
 
+  public void addMember(Member member) {
+    mMembers.add(member);
+  }
+
 }
